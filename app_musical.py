@@ -54,7 +54,8 @@ def process_excel(uploaded_file):
             modelo = row[modelo_col] if pd.notna(row[modelo_col]) else ''
             style = row[style_col] if pd.notna(row[style_col]) else ''
             cor = row[cor_col] if pd.notna(row[cor_col]) else ''
-            dpto = row[dpto_col] if pd.notna(row[dpto_col]) else ''
+            # Garantir 4 caracteres com zero na frente para DPTO
+            dpto = str(int(row[dpto_col])).zfill(4) if pd.notna(row[dpto_col]) else ''
             mic = row[mic_col] if pd.notna(row[mic_col]) else ''
             size = row[size_col] if pd.notna(row[size_col]) else ''
             qtd_ped = row[quant_ped_col] if pd.notna(row[quant_ped_col]) else 0
